@@ -7,6 +7,13 @@ app.use(express.json());
 let users = [];
 
 /**
+ * Root Route
+ */
+app.get("/", (req, res) => {
+  res.send("User API is running 🚀");
+});
+
+/**
  * GET /users
  * Optional:
  * ?search=
@@ -105,7 +112,11 @@ app.delete("/users/:id", (req, res) => {
   res.json({ message: "User deleted", user: deletedUser[0] });
 });
 
-const PORT = 3000;
+/**
+ * Server
+ */
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
